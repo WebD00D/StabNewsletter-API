@@ -9,7 +9,7 @@ window.addEventListener("load", function(event) {
 
     $.ajax({
       method: "POST",
-      url: "/sumbit-email",
+      url: "https://stabnewsletter-api.herokuapp.com/sumbit-email",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       data: JSON.stringify({ email: email })

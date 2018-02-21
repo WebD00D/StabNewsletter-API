@@ -7,8 +7,16 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(process.env.PORT || 8082, function() {
-  console.log("Listening on port 8082!");
+// CORS Middleware
+app.use(function(req, res, next) {
+  // Enabling CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, contentType,Content-Type, Accept, Authorization"
+  );
+  next();
 });
 
 app.use("/static/css", express.static(__dirname + "/static/css"));
@@ -38,4 +46,9 @@ app.post("/sumbit-email", function(request, res) {
 
 
   res.end("successful");
+});
+
+
+app.listen(process.env.PORT || 8082, function() {
+  console.log("Listening on port 8082!");
 });
