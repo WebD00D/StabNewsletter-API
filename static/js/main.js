@@ -8,11 +8,11 @@ window.addEventListener("load", function(event) {
     document.getElementById("errormessage").classList.add("d-none");
 
     $.ajax({
-      method: "POST",
-      url: "https://stabnewsletter-api.herokuapp.com/sumbit-email",
+      method: "GET",
+      url: "https://stabnewsletter-api.herokuapp.com/sumbit-email?email=" + email,
       contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      data: JSON.stringify({ email: email })
+      dataType: "json"
+      // data: JSON.stringify({ email: email })
     }).done(function(msg) {
       console.log("done");
     });

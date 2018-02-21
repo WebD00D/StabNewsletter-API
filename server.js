@@ -29,8 +29,9 @@ app.get("/", function(req, res) {
 });
 
 // LOGIC
-app.post("/sumbit-email", function(request, res) {
-  var email = request.body.email;
+app.get("/sumbit-email", function(request, res) {
+
+  var email = request.query.email;
   var timeStamp = Date.now();
 
   var auth = { apiKey: '09686596862e7008d4d49fb8ce5a8bded64d359a8a45df28' }; // STAB MAG..
