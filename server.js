@@ -36,7 +36,8 @@ app.get("/sumbit-email", function(request, res) {
 
   var auth = { apiKey: '09686596862e7008d4d49fb8ce5a8bded64d359a8a45df28' }; // STAB MAG..
   var api = new createsend(auth);
-  var listId = '2796008581b24e1fe52749417077d341' // Stab Dev..
+  // var listId = '2796008581b24e1fe52749417077d341' // Stab Dev..
+  var listId = 'a97d188f482a20aaeb1c3f1156d8f4e0' // StabMag
   var details = {
     EmailAddress: email
   };
