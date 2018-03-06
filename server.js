@@ -28,6 +28,25 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+
+// STAB TRAVEL..
+
+app.get("/send-travel-guide-notification", function(req, res){
+
+  var postmark = require("postmark");
+  var client = new postmark.Client("1532bacc-1b9b-4ad8-afd3-d3e0c47808de");
+
+  client.sendEmail({
+      From: "christian@rollingyouth.com",
+      To: "rva.christian91@gmail.com",
+      Subject: "New Stab Travel Submission",
+      TextBody: "Someone has submitted a travel guide! Visit the Stab Travel Dashboard to view it at www.stab-travel.netlify.com"
+    });
+
+
+})
+
+
 // LOGIC
 app.get("/sumbit-email", function(request, res) {
 
