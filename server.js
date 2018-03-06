@@ -34,10 +34,10 @@ app.get("/", function(req, res) {
 app.get("/send-travel-guide-notification", function(req, res){
 
   var postmark = require("postmark");
-  var client = new postmark.Client("1532bacc-1b9b-4ad8-afd3-d3e0c47808de");
+  var client = new postmark.Client("a273781c-cb06-4d6e-b335-b923211a4673");
 
   client.sendEmail({
-      From: "christian@rollingyouth.com",
+      From: "christian@stabmag.com",
       To: "rva.christian91@gmail.com",
       Subject: "New Stab Travel Submission",
       TextBody: "Someone has submitted a travel guide! Visit the Stab Travel Dashboard to view it at www.stab-travel.netlify.com"
