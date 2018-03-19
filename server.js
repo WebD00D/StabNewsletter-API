@@ -38,9 +38,9 @@ app.get("/send-travel-guide-notification", function(req, res){
 
   client.sendEmail({
       From: "christian@stabmag.com",
-      To: "rva.christian91@gmail.com, morgan@stabmag.com, ashton@stabmag.com",
+      To: "christian@rollingyouth.com, morgan@stabmag.com, ashton@stabmag.com",
       Subject: "New Stab Travel Submission",
-      TextBody: "Someone has submitted a travel guide! Visit the Stab Travel Dashboard to view it at www.stab-travel.netlify.com"
+      TextBody: "Someone has submitted a travel guide! Visit the Stab Travel Dashboard to view it at https://stab-travel-dashboard.netlify.com/"
     });
 
 
