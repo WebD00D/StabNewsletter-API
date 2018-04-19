@@ -46,7 +46,7 @@ app.get("/send-travel-guide-notification", function(req, res){
 })
 
 
-app.get("/send-house-you-built-notification", function(req, res){
+app.get("/send-house-you-built-notification", function(request, res){
 
   var postmark = require("postmark");
   var client = new postmark.Client("a273781c-cb06-4d6e-b335-b923211a4673");
@@ -58,7 +58,7 @@ app.get("/send-house-you-built-notification", function(req, res){
   var anythingElse = request.query.comment;
 
   var message =
-    "Name: " + name + " \n " +
+    "Name: " + name + " \n" +
     "Email: " + email + " \n" +
     "Project Title: " + title + " \n" +
     "Share Link: " + shareLink + " \n" +
