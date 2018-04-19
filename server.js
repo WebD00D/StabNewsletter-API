@@ -47,6 +47,36 @@ app.get("/send-travel-guide-notification", function(req, res){
 })
 
 
+app.get("/send-house-you-built-notification", function(req, res){
+
+  var postmark = require("postmark");
+  var client = new postmark.Client("a273781c-cb06-4d6e-b335-b923211a4673");
+
+  var name = request.query.name;
+  var email = request.query.email;
+  var title = request.query.title;
+  var shareLink = request.query.shareLink;
+  var anythingElse = request.query.comment;
+
+  var message =
+    "Name: " + name + " \n " +
+    "Email: " + email + " \n" +
+    "Project Title: " + title + " \n" +
+    "Share Link: " + shareLink + " \n" +
+    "Comments: " + anythingElse + " \n";
+
+
+  client.sendEmail({
+      From: "christian@stabmag.com",
+      To: "christian@rollingyouth.com",
+      Subject: "New House That You Built Submission",
+      TextBody: message
+    });
+
+
+})
+
+
 // LOGIC
 app.get("/sumbit-email", function(request, res) {
 
