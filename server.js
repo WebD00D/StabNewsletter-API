@@ -43,7 +43,6 @@ app.get("/send-travel-guide-notification", function(req, res){
       TextBody: "Someone has submitted a travel guide! Visit the Stab Travel Dashboard to view it at https://stab-travel-dashboard.netlify.com/"
     });
 
-
 })
 
 
@@ -58,12 +57,12 @@ app.get("/send-house-you-built-notification", function(req, res){
   var shareLink = request.query.shareLink;
   var anythingElse = request.query.comment;
 
-  var message =
-    "Name: " + name + " \n " +
-    "Email: " + email + " \n" +
-    "Project Title: " + title + " \n" +
-    "Share Link: " + shareLink + " \n" +
-    "Comments: " + anythingElse + " \n";
+  var message = "SAMPLE MESSAGE"
+    // "Name: " + name + " \n " +
+    // "Email: " + email + " \n" +
+    // "Project Title: " + title + " \n" +
+    // "Share Link: " + shareLink + " \n" +
+    // "Comments: " + anythingElse + " \n";
 
 
   client.sendEmail({
