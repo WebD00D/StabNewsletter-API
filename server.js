@@ -57,12 +57,12 @@ app.get("/send-house-you-built-notification", function(req, res){
   var shareLink = request.query.shareLink;
   var anythingElse = request.query.comment;
 
-  var message = "SAMPLE MESSAGE"
-    // "Name: " + name + " \n " +
-    // "Email: " + email + " \n" +
-    // "Project Title: " + title + " \n" +
-    // "Share Link: " + shareLink + " \n" +
-    // "Comments: " + anythingElse + " \n";
+  var message =
+    "Name: " + name + " \n " +
+    "Email: " + email + " \n" +
+    "Project Title: " + title + " \n" +
+    "Share Link: " + shareLink + " \n" +
+    "Comments: " + anythingElse + " \n";
 
 
   client.sendEmail({
@@ -71,6 +71,8 @@ app.get("/send-house-you-built-notification", function(req, res){
       Subject: "New House That You Built Submission",
       TextBody: message
     });
+
+    res.end("successful");
 
 
 })
