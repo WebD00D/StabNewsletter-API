@@ -67,7 +67,7 @@ app.get("/send-house-you-built-notification", function(request, res){
 
   client.sendEmail({
       From: "christian@stabmag.com",
-      To: "christian@rollingyouth.com",
+      To: "christian@rollingyouth.com, getus@rollingyouth.com",
       Subject: "New House That You Built Submission",
       TextBody: message
     });
