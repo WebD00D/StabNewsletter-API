@@ -34,7 +34,7 @@ app.get("/", function(req, res) {
 app.get("/welcome-to-surfclub", function(request, res){
 
   var postmark = require("postmark");
-  var client = new postmark.Client("a273781c-cb06-4d6e-b335-b923211a4673");
+  var client = new postmark.Client("5e363e6d-f69d-4211-9f6c-35771e996574");
 
   var email = request.query.email;
 
