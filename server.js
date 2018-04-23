@@ -29,6 +29,29 @@ app.get("/", function(req, res) {
 });
 
 
+// SURF CLUB LA
+
+app.get("/welcome-to-surfclub", function(request, res){
+
+  var postmark = require("postmark");
+  var client = new postmark.Client("a273781c-cb06-4d6e-b335-b923211a4673");
+
+  var email = request.query.email;
+
+  client.sendEmail({
+      From: "christian@stabmag.com",
+      To: email + " rva.christian91@gmail.com",
+      Subject: "Welcome to Surf Club LA",
+      TextBody: "Welcome to Surf Club LA - stoked your here."
+  });
+
+    res.end("successful");
+
+
+})
+
+// END SURF CLUB LA
+
 // STAB TRAVEL..
 
 app.get("/send-travel-guide-notification", function(req, res){
@@ -76,6 +99,8 @@ app.get("/send-house-you-built-notification", function(request, res){
 
 
 })
+
+
 
 
 // LOGIC
