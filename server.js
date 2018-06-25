@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var createsend = require('createsend-node');
 
+var twilio = require('twilio');
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -29,28 +31,42 @@ app.get("/", function(req, res) {
 });
 
 
-// SURF CLUB LA
+// AGENDA x STAB 30 
 
-app.get("/welcome-to-surfclub", function(request, res){
+app.get("/get-audio-link", function(req, res) {
 
-  var postmark = require("postmark");
-  var client = new postmark.Client("5e363e6d-f69d-4211-9f6c-35771e996574");
+  var email = req.query.email;
+  var phone = req.query.phone;
 
-  var email = request.query.email;
+  // ADD EMAIL TO LIST
+  var auth = { apiKey: '09686596862e7008d4d49fb8ce5a8bded64d359a8a45df28' }; // STAB MAG..
+  var api = new createsend(auth);
+  var listId = 'a97d188f482a20aaeb1c3f1156d8f4e0' // StabMag
+  var details = {
+    EmailAddress: email
+  };
 
-  client.sendEmail({
-      From: "christian@stabmag.com",
-      To: email + " rva.christian91@gmail.com",
-      Subject: "Welcome to Surf Club LA",
-      TextBody: "Welcome to Surf Club LA - stoked your here."
+  api.subscribers.addSubscriber(listId, details, (err, res) => {
+    if (err) console.log(err);
   });
 
-    res.end("successful");
+  // SEND LINK .. 
+  var accountSid = 'AC00fdc00994ba0f24da95d8c0fcd24f2a'; // Your Account SID from www.twilio.com/console
+  var authToken = '172ef53b45be9710c7d8bdc86d981465';   // Your Auth Token from www.twilio.com/console
+  var client = new twilio(accountSid, authToken);
 
+  client.messages
+  .create({
+     body: 'Get the Stab30 Audio Experience Here! http://www.stab30.com',
+     from: '+12132774069',
+     to: phone
+   })
+  .then(message => console.log(message.sid))
+  .done();
+
+  res.end("successful");
 
 })
-
-// END SURF CLUB LA
 
 // STAB TRAVEL..
 
@@ -67,7 +83,6 @@ app.get("/send-travel-guide-notification", function(req, res){
     });
 
 })
-
 
 app.get("/send-house-you-built-notification", function(request, res){
 
@@ -97,10 +112,7 @@ app.get("/send-house-you-built-notification", function(request, res){
 
     res.end("successful");
 
-
 })
-
-
 
 
 // LOGIC
